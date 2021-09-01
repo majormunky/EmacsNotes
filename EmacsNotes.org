@@ -18,6 +18,10 @@ C-x 3: Split window vertically
 
 ;; This disables the audio bell sound and enables a flash instead
 (setq visible-bell t)
+
+;; This will setup a theme
+;; The theme name is a symbol and not a string
+(load-theme 'misterioso)
 #+end_src
 
 ** Font Setup
@@ -25,5 +29,21 @@ To change the default font, we need to run this function
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil :font "Font Name" :height 160)
 #+end_src
+
+** Setup Package Manager
+#+begin_src emacs-lisp
+(require 'package)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+    (package-install 'use-package))
+
+(reqiure 'use-package)
+(setq use-package-always-ensure t)
+#+end_src
+
 
 ** Other Stuff
