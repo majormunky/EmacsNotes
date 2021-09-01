@@ -11,6 +11,21 @@
    C-p f: Find file within project
 
 * Configuration
+** General
+#+BEGIN_SRC emacs-lisp -n 
+(setq-default tab-width 4) ;; Sets default tab width to 4
+
+;; Insert URL here
+;; By default, emacs will create backup files in the
+;; same folder as the file being opened/edited
+;; This will set a dediated folder for backup files
+;; The folder specified can be of any name or location
+(setq backup-directory-alist '(("." . "~/.emacs-backup-files")))
+
+;; Unsure, but, I think it makes backing up files safer
+(setq backup-by-copying t)
+#+END_SRC
+
 ** User Interface
 #+BEGIN_SRC emacs-lisp -n
 (setq inhibit-start-message t)  ;; Turns off welcome page
@@ -43,6 +58,30 @@ To change the default font, we need to run this function
 (setq use-package-always-ensure t)
 #+end_src
 
+** Key Shortcut Configuration
+#+BEGIN_SRC emacs-lisp -n
+;; To create a global key shortcut
+(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
+#+END_SRC
+
+There is a package called general.el? that will allow the
+creation of a global prefix hotkey that can be used to
+show a menu of customized actions.  This is helpful so that
+you don't have to worry about creating hotkeys that might
+override existing hotkeys.
+#+BEGIN_SRC emacs-lisp -n
+(use-package general
+  :config
+  (general-create-definer custom_name_here/leader-keys
+  :keymaps '(normal insert visual emacs)
+  :prefix "SPC"
+  :global-prefix "C-SPC"
+  (custom_name_here/leader-keys
+    "t" '(:ignore t :which-key "choose theme")
+	"tt" '(counsel-load-theme :which-key "choose theme")))
+#+END_SRC
+This example sets up control + space as a starting key
+which will then show a new menu that can be configured.
 ** Other Stuff
 - general (hotkeys)
 - projectile
