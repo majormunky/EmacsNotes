@@ -1,0 +1,29 @@
+* Key Shortcuts
+C-x C-f: Open / Create file
+C-x k: Kill Buffer
+C-x 0: Remove Window
+C-x 2: Split window horizontally
+C-x 3: Split window vertically
+
+* Configuration
+** User Interface
+#+begin_src emacs-lisp
+;; This turns off the initial welcome page
+(setq inhibit-start-message t)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(set-fringe-mode 10)
+
+;; This disables the audio bell sound and enables a flash instead
+(setq visible-bell t)
+#+end_src
+
+** Font Setup
+To change the default font, we need to run this function
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil :font "Font Name" :height 160)
+#+end_src
+
+** Other Stuff
