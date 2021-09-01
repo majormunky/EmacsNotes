@@ -1,28 +1,26 @@
 * Key Shortcuts
-C-x C-f: Open / Create file
-C-x k: Kill Buffer
-C-x 0: Remove Window
-C-x 2: Split window horizontally
-C-x 3: Split window vertically
+** General
+   C-x C-f: Open / Create file
+   C-x k: Kill Buffer
+   C-x 0: Remove Window
+   C-x 2: Split window horizontally
+   C-x 3: Split window vertically
+
+** Portfolio
+   C-p p: Open Project
+   C-p f: Find file within project
 
 * Configuration
 ** User Interface
-#+begin_src emacs-lisp
-;; This turns off the initial welcome page
-(setq inhibit-start-message t)
-
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
-(set-fringe-mode 10)
-
-;; This disables the audio bell sound and enables a flash instead
-(setq visible-bell t)
-
-;; This will setup a theme
-;; The theme name is a symbol and not a string
-(load-theme 'misterioso)
-#+end_src
+#+BEGIN_SRC emacs-lisp -n
+(setq inhibit-start-message t)  ;; Turns off welcome page
+(scroll-bar-mode -1)            ;; Unsure
+(tool-bar-mode -1)              ;; Turns off toolbar at the top of the window
+(tooltip-mode -1)               ;; Unsure
+(set-fringe-mode 10)            ;; Unsure
+(setq visible-bell t) ;; Turns off bell sound, enables visual bell
+(load-theme 'misterioso) ;; loads a theme by using a symbol
+#+END_SRC
 
 ** Font Setup
 To change the default font, we need to run this function
@@ -46,3 +44,11 @@ To change the default font, we need to run this function
 #+end_src
 
 ** Other Stuff
+- general (hotkeys)
+- projectile
+- hydra
+- helpful
+- evil
+- evil-collection
+- doom-modeline
+- all-the-icons
