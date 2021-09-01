@@ -45,5 +45,4 @@ To change the default font, we need to run this function
 (setq use-package-always-ensure t)
 #+end_src
 
-
 ** Other Stuff
