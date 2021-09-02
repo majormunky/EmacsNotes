@@ -64,7 +64,7 @@ To change the default font, we need to run this function
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 #+END_SRC
 
-There is a package called general.el? that will allow the
+There is a package called general.el that will allow the
 creation of a global prefix hotkey that can be used to
 show a menu of customized actions.  This is helpful so that
 you don't have to worry about creating hotkeys that might
@@ -73,15 +73,30 @@ override existing hotkeys.
 (use-package general
   :config
   (general-create-definer custom_name_here/leader-keys
-  :keymaps '(normal insert visual emacs)
   :prefix "SPC"
-  :global-prefix "C-SPC"
+  :global-prefix "C-M-SPC")
+  (general-auto-unbind-keys)
   (custom_name_here/leader-keys
     "t" '(:ignore t :which-key "choose theme")
 	"tt" '(counsel-load-theme :which-key "choose theme")))
 #+END_SRC
-This example sets up control + space as a starting key
+This example sets up control + alt + space as a starting key
 which will then show a new menu that can be configured.
+
+Here is a way to add more items to this menu
+This will create a way that we can scale text up and down
+#+BEGIN_SRC emacs-lisp -n
+(use-package hydra
+  (defhydra hydra-text-scale (:timeout 4)
+    "scale text"
+    ("j" text-scale-increase "in")
+    ("k" text-scale-decrease "out")
+    ("f" nil "finished" :exit t))
+
+(custom_name_here/leader-keys "ts" '(hydra-text-scale/body :which-key "scale text"))
+#+END_SRC
+This will add a menu entry after hitting the first t, which will include the scale text option
+
 ** Other Stuff
 - general (hotkeys)
 - projectile
