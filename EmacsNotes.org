@@ -1,14 +1,14 @@
 * Key Shortcuts
 ** General
-   C-x C-f: Open / Create file
-   C-x k: Kill Buffer
-   C-x 0: Remove Window
-   C-x 2: Split window horizontally
-   C-x 3: Split window vertically
+   - C-x C-f: Open / Create file
+   - C-x k: Kill Buffer
+   - C-x 0: Remove Window
+   - C-x 2: Split window horizontally
+   - C-x 3: Split window vertically
 
-** Portfolio
-   C-p p: Open Project
-   C-p f: Find file within project
+** Projectile
+   - C-p p: Open Project
+   - C-p f: Find file within project
 
 * Configuration
 ** General
