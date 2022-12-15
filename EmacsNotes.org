@@ -1,42 +1,72 @@
 * Key Shortcuts
 ** General
    - C-x C-f: Open / Create file
-   - C-x k: Kill Buffer
+   - C-x C-w: Save As
+   - C-x C-s: Save
    - C-x 0: Remove Window
    - C-x 2: Split window horizontally
    - C-x 3: Split window vertically
+   - C-x o: Switch focus between windows
 
+** Text
+   - C-Space: Start Selection
+   - C-w: Cut
+   - M-w: Copy
+   - C-y: Paste
+   - C-_: Undo
+   - C-g: Reverse undo history, then undo
 ** Projectile
    - C-p p: Open Project
    - C-p f: Find file within project
 
+** Org Mode
+   - Shift-Tab: Toggle folding
+   - C-Enter: Add new heading at same level as cursor
+   - Alt-Enter: Add new item in list
+
+** Buffers
+   - Switch Buffer
+	 - C-x left-arrow
+	 - C-x right-arrow
+   - C-x b: Switch Buffer List
+   - C-x C-b: Show open buffers
+   - C-x k: Kill buffer
+
+   
 * Configuration
 ** General
-#+BEGIN_SRC emacs-lisp -n 
-(setq-default tab-width 4) ;; Sets default tab width to 4
+#+BEGIN_SRC emacs-lisp -n
+  ;; Sets default tab width to 4
+  (setq-default tab-width 4) 
 
-;; Insert URL here
-;; By default, emacs will create backup files in the
-;; same folder as the file being opened/edited
-;; This will set a dediated folder for backup files
-;; The folder specified can be of any name or location
-(setq backup-directory-alist '(("." . "~/.emacs-backup-files")))
+  ;; By default, emacs will create backup files in the
+  ;; same folder as the file being opened/edited
+  ;; This will set a dediated folder for backup files
+  ;; The folder specified can be of any name or location
+  (setq backup-directory-alist '(("." . "~/.emacs-backup-files")))
 
-;; Unsure, but, I think it makes backing up files safer
-(setq backup-by-copying t)
+  ;; Unsure, but, I think it makes backing up files safer
+  (setq backup-by-copying t)
 #+END_SRC
 
 ** User Interface
 #+BEGIN_SRC emacs-lisp -n
-(setq inhibit-start-message t)  ;; Turns off welcome page
-(scroll-bar-mode -1)            ;; Unsure
-(tool-bar-mode -1)              ;; Turns off toolbar at the top of the window
-(tooltip-mode -1)               ;; Unsure
-(set-fringe-mode 10)            ;; Unsure
-(setq visible-bell t) ;; Turns off bell sound, enables visual bell
-(load-theme 'misterioso) ;; loads a theme by using a symbol
+  (setq inhibit-start-message t)  ;; Turns off welcome page
+  (scroll-bar-mode -1)            ;; Unsure
+  (tool-bar-mode -1)              ;; Turns off toolbar at the top of the window
+  (tooltip-mode -1)               ;; Unsure
+  (set-fringe-mode 10)            ;; Unsure
+  (setq visible-bell t) ;; Turns off bell sound, enables visual bell
+  (load-theme 'misterioso) ;; loads a theme by using a symbol
 #+END_SRC
-
+*** Modeline
+Doom modeline can make the modeline better:
+#+BEGIN_SRC emacs-lisp -n
+  (use-package doom-modeline
+	:ensure t
+	:init (doom-modeline-mode 1)
+	:custom ((doom-modeline-height 15)))
+#+END_SRC
 ** Font Setup
 To change the default font, we need to run this function
 #+begin_src emacs-lisp
@@ -45,23 +75,23 @@ To change the default font, we need to run this function
 
 ** Setup Package Manager
 #+begin_src emacs-lisp
-(require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+  (require 'package)
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+						   ("org" . "https://orgmode.org/elpa/")
+						   ("elpa" . "https://elpa.gnu.org/packages/")))
 
-(package-initialize)
-(unless package-archive-contents
-    (package-install 'use-package))
+  (package-initialize)
+  (unless package-archive-contents
+	  (package-install 'use-package))
 
-(reqiure 'use-package)
-(setq use-package-always-ensure t)
+  (reqiure 'use-package)
+  (setq use-package-always-ensure t)
 #+end_src
 
 ** Key Shortcut Configuration
 #+BEGIN_SRC emacs-lisp -n
-;; To create a global key shortcut
-(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
+  ;; To create a global key shortcut
+  (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 #+END_SRC
 
 There is a package called general.el that will allow the
@@ -70,15 +100,15 @@ show a menu of customized actions.  This is helpful so that
 you don't have to worry about creating hotkeys that might
 override existing hotkeys.
 #+BEGIN_SRC emacs-lisp -n
-(use-package general
-  :config
-  (general-create-definer custom_name_here/leader-keys
-  :prefix "SPC"
-  :global-prefix "C-M-SPC")
-  (general-auto-unbind-keys)
-  (custom_name_here/leader-keys
-    "t" '(:ignore t :which-key "choose theme")
-	"tt" '(counsel-load-theme :which-key "choose theme")))
+  (use-package general
+	:config
+	(general-create-definer custom_name_here/leader-keys
+	:prefix "SPC"
+	:global-prefix "C-M-SPC")
+	(general-auto-unbind-keys)
+	(custom_name_here/leader-keys
+	  "t" '(:ignore t :which-key "choose theme")
+	  "tt" '(counsel-load-theme :which-key "choose theme")))
 #+END_SRC
 This example sets up control + alt + space as a starting key
 which will then show a new menu that can be configured.
@@ -86,14 +116,14 @@ which will then show a new menu that can be configured.
 Here is a way to add more items to this menu
 This will create a way that we can scale text up and down
 #+BEGIN_SRC emacs-lisp -n
-(use-package hydra
-  (defhydra hydra-text-scale (:timeout 4)
-    "scale text"
-    ("j" text-scale-increase "in")
-    ("k" text-scale-decrease "out")
-    ("f" nil "finished" :exit t))
+  (use-package hydra
+	  (defhydra hydra-text-scale (:timeout 4)
+		"scale text"
+		("j" text-scale-increase "in")
+		("k" text-scale-decrease "out")
+		("f" nil "finished" :exit t))
 
-(custom_name_here/leader-keys "ts" '(hydra-text-scale/body :which-key "scale text"))
+	(custom_name_here/leader-keys "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+END_SRC
 This will add a menu entry after hitting the first t, which will include the scale text option
 
@@ -102,7 +132,5 @@ This will add a menu entry after hitting the first t, which will include the sca
 - projectile
 - hydra
 - helpful
-- evil
-- evil-collection
 - doom-modeline
 - all-the-icons
