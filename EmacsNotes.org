@@ -1,38 +1,69 @@
 * Key Shortcuts
 ** General
-   - C-x C-f: Open / Create file
-   - C-x C-w: Save As
-   - C-x C-s: Save
-   - C-x 0: Remove Window
-   - C-x 2: Split window horizontally
-   - C-x 3: Split window vertically
-   - C-x o: Switch focus between windows
+| Command                   | Key     | Description                            |
+|---------------------------+---------+----------------------------------------|
+| ?                         | C-x C-f | Opens or creates a new file            |
+| ?                         | C-x C-w | Save As                                |
+| ?                         | C-x C-s | Save                                   |
+| ?                         | C-x 0   | Remove window in focus                 |
+| ?                         | C-x 1   | Remove all windows except one in focus |
+| split-window-horizontally | C-x 2   | Splits window horizontally             |
+| split-window-vertically   | C-x 3   | Splits window vertically               |
+| ?                         | C-x o   | Switch focus between windows           |
 
 ** Text
-   - C-Space: Start Selection
-   - C-w: Cut
-   - M-w: Copy
-   - C-y: Paste
-   - C-_: Undo
-   - C-g: Reverse undo history, then undo
+| Command | Key     | Description                          |
+|---------+---------+--------------------------------------|
+| ?       | C-Space | Start selection                      |
+| ?       | C-w     | Cut selection                        |
+| ?       | M-w     | Copy selection                       |
+| ?       | C-y     | Paste                                |
+| ?       | C-_     | Undo                                 |
+| ?       | C-g     | Redo: Reverse undo history then undo |
+
 ** Projectile
-   - C-p p: Open Project
-   - C-p f: Find file within project
+| Command | Key   | Description              |
+|---------+-------+--------------------------|
+| ?       | C-p p | Open project             |
+| ?       | C-p f | Find file within project |
 
 ** Org Mode
-   - Shift-Tab: Toggle folding
-   - C-Enter: Add new heading at same level as cursor
-   - Alt-Enter: Add new item in list
+| Command | Key            | Description                             |
+|---------+----------------+-----------------------------------------|
+| ?       | Shift-Tab      | Fold content                            |
+| ?       | C-Enter        | Add new heading at same level as cursor |
+| ?       | Alt-Enter      | Add new item in list                    |
+| ?       | C-c pipe       | Create table with row / col count       |
+| ?       | Tab            | Select next cell or row in table        |
+| ?       | Alt-up-arrow   | Move heading element above              |
+| ?       | Alt-down-arrow | Move heading element down               |
 
 ** Buffers
-   - Switch Buffer
-	 - C-x left-arrow
-	 - C-x right-arrow
-   - C-x b: Switch Buffer List
-   - C-x C-b: Show open buffers
-   - C-x k: Kill buffer
-
+| Command | Key             | Description                           |
+|---------+-----------------+---------------------------------------|
+| ?       | C-x left-arrow  | Switch buffer left                    |
+| ?       | C-x right-arrow | Switch buffer right                   |
+| ?       | C-x b           | Open buffer list to switch to new one |
+| ?       | C-x C-b         | Show open buffers                     |
+| ?       | C-x k           | Kill buffer                           |
+| ?       | C-x K           | Kill all buffers (custom command)     |
    
+** Magit
+| Command      | Key   | Description  |
+|--------------+-------+--------------|
+| magit-status | C-x g | Magit Status |
+|              |       |              |
+
+** Magit Status Buffer
+| Command | Key      | Description                    |
+|---------+----------+--------------------------------|
+| ?       | s        | Stage file that cursor is on   |
+| ?       | S        | Stage all modified files       |
+| ?       | u        | Unstage file that cursor is on |
+| ?       | U        | Unstage all files              |
+| ?       | Mark + s | Stage hunk that is marked      |
+| ?       | P        | Push                           |
+  
 * Configuration
 ** General
 #+BEGIN_SRC emacs-lisp -n
@@ -134,3 +165,13 @@ This will add a menu entry after hitting the first t, which will include the sca
 - helpful
 - doom-modeline
 - all-the-icons
+
+* Need to document
+http://howardism.org/Technical/Emacs/eshell-why.html
+Emacs shell
+Redirect output to buffer
+
+* Org Mode Notes
+** Libraries to look into
+org-bullets
+
