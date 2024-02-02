@@ -10,16 +10,19 @@
 | split-window-horizontally | C-x 2   | Splits window horizontally             |
 | split-window-vertically   | C-x 3   | Splits window vertically               |
 | ?                         | C-x o   | Switch focus between windows           |
+| ?                         | C-x +   | Equally size windows                   |
 
 ** Text
-| Command | Key     | Description                          |
-|---------+---------+--------------------------------------|
-| ?       | C-Space | Start selection                      |
-| ?       | C-w     | Cut selection                        |
-| ?       | M-w     | Copy selection                       |
-| ?       | C-y     | Paste                                |
-| ?       | C-_     | Undo                                 |
-| ?       | C-g     | Redo: Reverse undo history then undo |
+| Command           | Key     | Description                          |
+|-------------------+---------+--------------------------------------|
+| ?                 | C-Space | Start selection                      |
+| ?                 | C-w     | Cut selection                        |
+| ?                 | M-w     | Copy selection                       |
+| ?                 | C-y     | Paste                                |
+| ?                 | C-_     | Undo                                 |
+| ?                 | C-g     | Redo: Reverse undo history then undo |
+| mark-whole-buffer | C-x h   | Select all text                      |
+| indent-region     | C-M-\   | Indent (code)                        |
 
 ** Projectile
 | Command | Key   | Description              |
@@ -37,6 +40,13 @@
 | ?       | Tab            | Select next cell or row in table        |
 | ?       | Alt-up-arrow   | Move heading element above              |
 | ?       | Alt-down-arrow | Move heading element down               |
+
+** Org-Roam
+| Command                | Key     | Description    |
+|------------------------+---------+----------------|
+| org-roam-buffer-toggle | C-c n l | Buffer Toggle? |
+| org-roam-node-find     | C-c n f | Node Find      |
+| org-roam-node-insert   | C-c n i | Node Insert    |
 
 ** Buffers
 | Command | Key             | Description                           |
@@ -174,4 +184,13 @@ Redirect output to buffer
 * Org Mode Notes
 ** Libraries to look into
 org-bullets
+
+
+* To Check Into
+** String Library: https://github.com/magnars/s.el
+** Completion Library: https://company-mode.github.io/
+** Hotkey Display Library: https://github.com/justbur/emacs-which-key
+** Smartparens: https://github.com/Fuco1/smartparens
+** Hotkey manager: https://melpa.org/#/hydra
+** Window switcher: https://github.com/abo-abo/ace-window
 
